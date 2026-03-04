@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#1f1c2c,#928dab);
+overflow:hidden;
+padding:20px;
+}
+
+/* Card */
+
+.card{
+width:100%;
+max-width:520px;
+background:#fffaf0;
+padding:40px;
+border-radius:14px;
+box-shadow:0 20px 60px rgba(0,0,0,0.4);
+position:relative;
+text-align:center;
+animation:fade 1.5s ease;
+}
+
+/* Letter look */
+
+.card::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+right:0;
+height:8px;
+background:#e63946;
+border-radius:14px 14px 0 0;
+}
+
+/* Title */
+
+h1{
+color:#e63946;
+margin-bottom:20px;
+font-size:28px;
+}
+
+/* Message */
+
+#text{
+font-size:18px;
+line-height:1.7;
+color:#333;
+min-height:140px;
+}
+
+/* Spotify */
+
+.music{
+margin-top:25px;
+}
+
+.music iframe{
+width:100%;
+border-radius:12px;
+border:none;
+height:80px;
+}
+
+/* Animation */
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* Floating hearts */
+
+.heart{
+position:absolute;
+color:#ff4d6d;
+font-size:20px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0);
+opacity:1;
+}
+100%{
+transform:translateY(-100vh);
+opacity:0;
+}
+}
+
+/* Mobile */
+
+@media(max-width:500px){
+
+.card{
+padding:28px;
+}
+
+h1{
+font-size:24px;
+}
+
+#text{
+font-size:16px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>I'm Really Sorry Vanshu ji ❤️</h1>
+
+<p id="text"></p>
+
+<div class="music">
+<!-- Paste Spotify Embed Link -->
+<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/2QNU1aSZwHbdlVGK6IrX8V?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+</div>
+
+<script>
+
+/* Typing message */
+
+const message = `Agar mere se kuch galti hui ho...
+ya meri kisi baat se aapko  bura laga ho...
+
+toh I'm really sorry.
+
+Mera intention kabhi bhi aapko hurt karne ka nahi tha.
+
+aap mere liye bohot important ho.
+Bas ek baar meri baat sun lo.
+
+I truly miss you ❤️`;
+
+let i=0;
+
+function typing(){
+if(i<message.length){
+document.getElementById("text").innerHTML += message.charAt(i);
+i++;
+setTimeout(typing,40);
+}
+}
+
+typing();
+
+/* floating hearts */
+
+setInterval(()=>{
+let heart=document.createElement("div")
+heart.classList.add("heart")
+heart.innerHTML="❤"
+
+heart.style.left=Math.random()*100+"vw"
+heart.style.fontSize=(Math.random()*20+10)+"px"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>{
+heart.remove()
+},6000)
+
+},500)
+
+</script>
+
+</body>
+</html>
+
